@@ -1,4 +1,4 @@
-import {CommandOption} from './CommandOption';
+import {CommandOption} from './commandOption';
 
 export abstract class Command {
   private description: string;
