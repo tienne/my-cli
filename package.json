@@ -1,0 +1,21 @@
+{
+  "name": "minda-cli",
+  "version": "1.0.0",
+  "description": "minda command line interface",
+  "main": "index.js",
+  "scripts": {
+    "lint": "tslint -c tslint -c tslint.json -p tsconfig.json",
+    "build": "yarn lint && rimraf dist && tsc"
+  },
+  "author": "David Kwon <tienne89@gmail.com>",
+  "license": "MIT",
+  "dependencies": {
+    "commander": "^2.12.2"
+  },
+  "devDependencies": {
+    "@types/node": "^9.3.0",
+    "rimraf": "^2.6.2",
+    "tslint": "^5.8.0",
+    "typescript": "^2.6.2"
+  }
+}
