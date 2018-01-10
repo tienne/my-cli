@@ -1,7 +1,9 @@
 #!/usr/bin/env node
 import {Cli} from './core';
 
-const cli = new Cli();
+const minda = new Cli('minda', process.argv);
 
-console.log(process.argv);
-cli.help();
+minda.run()
+  .then(() => {
+    //
+  });
