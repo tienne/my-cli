@@ -1,8 +1,8 @@
-import {CommandOption} from './commandOption';
+import {Option} from './commandOption';
 
 export abstract class Command {
   private descriptionMessage: string;
-  private options: CommandOption[];
+  private options: Option[];
   private commandName: string;
 
   /**

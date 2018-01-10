@@ -1,6 +1,13 @@
 import {Command} from '../core';
+import {option} from '../core/command/commandOption';
 
 export default class Init extends Command {
+
+  @option({
+    name: '',
+    required: true,
+  })
+  public test: string;
 
   public command() {
     return 'init';
