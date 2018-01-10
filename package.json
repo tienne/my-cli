@@ -2,11 +2,16 @@
   "name": "minda-cli",
   "version": "1.0.0",
   "description": "minda command line interface",
-  "main": "index.js",
+  "main": "./dist/index.js",
   "scripts": {
     "lint": "tslint -c tslint -c tslint.json -p tsconfig.json",
-    "build": "yarn lint && rimraf dist && tsc"
+    "clear:dist": "rimraf dist",
+    "build": "yarn lint && yarn clear:dist && tsc"
   },
+  "bin": {
+    "minda": "dist/index.js"
+  },
+  "preferGlobal": false,
   "author": "David Kwon <tienne89@gmail.com>",
   "license": "MIT",
   "dependencies": {
