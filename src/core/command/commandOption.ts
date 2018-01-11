@@ -6,9 +6,13 @@ export interface Option {
   required: boolean;
 }
 
+/**
+ * option decorator
+ * @param {Option} param
+ * @returns {(target: Command, propertyName: string) => void}
+ */
 export function option(param: Option) {
   return (target: Command, propertyName: string) => {
-    console.log(target);
-    console.log(propertyName);
+    //
   };
 }
