@@ -1,9 +1,21 @@
 import {Option} from './commandOption';
 
+export interface CommandMetaOption {
+  /**
+   * command description use in help method
+   */
+  description?: string;
+  name?: string;
+  alias?: string;
+}
+
 export abstract class Command {
-  private descriptionMessage: string;
-  private options: Option[];
-  private commandName: string;
+  public static decorator = false;
+  public static description: string | undefined;
+  public static commandName: string | undefined;
+  public static alias: string | undefined;
+  public static params: any[] = [];
+  public static options: Option[] = [];
 
   /**
    * run command action
@@ -11,20 +23,21 @@ export abstract class Command {
    * @returns {Promise<any> | any}
    */
   public abstract run(...args: any[]): Promise<any> | any;
+}
 
-  /**
-   * 명령어의 설명을 입력합니다.
-   * @returns {string}
-   */
-  public abstract description(): string;
+/**
+ * command decorator
+ * @param {CommandMetaOption} option
+ * @returns {(target: Command) => any}
+ */
+export function command(option?: CommandMetaOption) {
+  return (target: typeof Command) => {
+    const meta = option || {};
 
-  public abstract command(): string;
+    target.description = meta!.description;
+    target.alias = meta!.alias;
+    target.commandName = meta!.name;
 
-  public getDescription(): string {
-    return this.descriptionMessage;
-  }
-
-  public getCommand(): string {
-    return this.commandName;
-  }
+    target.decorator = true;
+  };
 }

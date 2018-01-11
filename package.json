@@ -15,11 +15,13 @@
   "author": "David Kwon <tienne89@gmail.com>",
   "license": "MIT",
   "dependencies": {
+    "glob": "^7.1.2",
     "inquirer": "^5.0.0",
     "lowdb": "^1.0.0",
     "reflect-metadata": "^0.1.10"
   },
   "devDependencies": {
+    "@types/glob": "^5.0.34",
     "@types/inquirer": "^0.0.36",
     "@types/lowdb": "^1.0.0",
     "@types/node": "^9.3.0",
