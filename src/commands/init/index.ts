@@ -22,6 +22,8 @@ export default class Init extends Command {
       //
     })aaa: string
   ) {
-
+    console.log('========Init run ===========');
+    console.log(test);
+    console.log(aaa);
   }
 }

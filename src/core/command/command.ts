@@ -16,6 +16,11 @@ export abstract class Command {
   public static alias: string | undefined;
   public static params: any[] = [];
   public static options: Option[] = [];
+  public helpBuilder: any;
+
+  public constructor(helpBuilder: any) {
+    this.helpBuilder = helpBuilder;
+  }
 
   /**
    * run command action

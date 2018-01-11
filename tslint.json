@@ -48,7 +48,8 @@
     "one-variable-per-declaration": [
       false
     ],
-    "trailing-comma": false
+    "trailing-comma": false,
+    "interface-over-type-literal": false
   },
   "rulesDirectory": []
 }

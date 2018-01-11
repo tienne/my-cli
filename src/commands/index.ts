@@ -4,6 +4,6 @@ import {Command, command} from '../core';
 export default class Minda extends Command {
 
   public run() {
-
+    console.log('===============run Minda ==============');
   }
 }

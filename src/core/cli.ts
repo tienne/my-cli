@@ -1,15 +1,15 @@
 import * as path from 'path';
-import * as fs from 'fs';
 import * as glob from 'glob';
 import {Command} from './command';
 import {removeFilename} from './utils/fs';
 
 export class Cli {
 
-  private commands: Command[] = [];
-  private rootCommand: Command;
+  private commands: typeof Command[] = [];
+  private rootCommand: typeof Command;
   private name: string;
   private commandPath: string;
+  private srcArgv: string[] = [];
   private argv: string[] = [];
 
   public getCommandPath() {
@@ -17,13 +17,16 @@ export class Cli {
   }
 
   public getArguments() {
-    return this.argv.splice(2);
+    return this.argv;
   }
 
   public constructor(name: string, commandPath: string) {
     this.name = name;
     this.commandPath = path.resolve(commandPath);
-    this.argv = process.argv;
+
+    this.srcArgv = process.argv;
+    this.argv.splice(2);
+
     this.parse();
   }
 
@@ -33,30 +36,42 @@ export class Cli {
     });
   }
 
+  /**
+   * 커맨드들을 불러와서 실행할 명령어를 찾습니다.
+   */
   private parse() {
     const files = glob.sync(path.join(this.getCommandPath(), '**/index.js'));
-
     files.map((file) => {
-      const module = require(file);
+      const CommandConstructor = this.getCommandConstructor(file);
 
-      if (module) {
-        const targetCommand = module.default;
-
-        if (targetCommand && targetCommand.prototype instanceof Command) {
-          if (!targetCommand.decorator) {
-            throw TypeError(`Command class in '${file}' not use '@command()' decorator`);
-          }
-
-          const command = new targetCommand();
-
-          if (this.isRootPath(file)) {
-            this.rootCommand = command;
-          } else {
-            this.commands.push(command);
-          }
-        }
-      }
+      //
     });
+
+    this.findRunCommand();
+  }
+
+  /**
+   * 해당경로의 커맨드를 저장합니다.
+   * @param {string} file 커맨드파일 위치
+   */
+  private getCommandConstructor(file: string) {
+    const module = require(file);
+    let CommandConstructor: typeof Command = module.default;
+
+    if (module) {
+
+      CommandConstructor = module.default;
+
+      if (CommandConstructor && CommandConstructor.prototype instanceof Command) {
+        if (!CommandConstructor.decorator) {
+          throw TypeError(`Command class in '${file}' not use '@command()' decorator`);
+        }
+      } else {
+        return '';
+      }
+    }
+
+    return CommandConstructor;
   }
 
   private isRootPath(str: string) {
@@ -64,6 +79,10 @@ export class Cli {
     str = path.join(removeFilename(str));
 
     return (rootPath === str) || (rootPath + path.sep === str);
+  }
+
+  private findRunCommand() {
+    console.log(this.argv);
   }
 
   private runCommand(command: Command) {
