@@ -1,5 +1,5 @@
 import {Command, command, option} from '../../core/index';
-import {param} from '../../core/command';
+import {param} from '../../core/command/index';
 
 @command({
   description: 'Minda Cli 초기 설정을 합니다.',

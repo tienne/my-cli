@@ -1,6 +1,6 @@
 import * as path from 'path';
 import * as glob from 'glob';
-import {Command} from './command';
+import {Command} from './command/index';
 import {removeFilename} from './utils/fs';
 
 export class Cli {

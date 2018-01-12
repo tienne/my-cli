@@ -1,4 +1,4 @@
-import {Command, command} from '../core';
+import {Command, command} from '../core/index';
 
 @command()
 export default class Minda extends Command {
