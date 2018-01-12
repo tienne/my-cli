@@ -7,7 +7,7 @@ const gulpSequence = require('gulp-sequence');
 const del = require('del');
 
 const distIndex = process.argv.indexOf('--dist');
-const dist = distIndex < 0 ? 'node_modules/@deco' : process.argv[distIndex + 1];
+const dist = distIndex < 0 ? 'node_modules/@garnish' : process.argv[distIndex + 1];
 
 const config = {
   src: 'src',

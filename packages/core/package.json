@@ -1,7 +1,7 @@
 {
-  "name": "@deco/core",
-  "version": "0.0.2",
-  "description": "deco is TypeScript making Cli Framework",
+  "name": "@garnish/core",
+  "version": "0.0.0",
+  "description": "garnish is TypeScript making Cli Framework",
   "keywords": [
     "typescript",
     "cli"

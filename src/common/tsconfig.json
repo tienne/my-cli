@@ -12,7 +12,7 @@
     "sourceMap": false,
     "allowJs": false,
     "rootDir": "./",
-    "outDir": "../../node_modules/@deco/common"
+    "outDir": "../../node_modules/@garnish/common"
   },
   "include": [
     "*.ts",
