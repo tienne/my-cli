@@ -1,15 +1,13 @@
 {
-  "name": "minda-cli",
+  "name": "decojs",
   "version": "1.0.0",
-  "description": "minda command line interface",
-  "main": "./dist/index.js",
+  "description": "Typescript make Cli framework",
+  "main": "index.js",
   "scripts": {
     "lint": "tslint -c tslint -c tslint.json -p tsconfig.json",
-    "clear:dist": "rimraf dist",
-    "build": "yarn lint && yarn clear:dist && tsc"
-  },
-  "bin": {
-    "minda": "dist/index.js"
+    "watch": "gulp watch",
+    "build": "yarn lint && gulp build",
+    "build:package": "yarn lint && gulp build --dist packages"
   },
   "preferGlobal": false,
   "author": "David Kwon <tienne89@gmail.com>",
@@ -25,6 +23,11 @@
     "@types/inquirer": "^0.0.36",
     "@types/lowdb": "^1.0.0",
     "@types/node": "^9.3.0",
+    "del": "^3.0.0",
+    "gulp": "^3.9.1",
+    "gulp-sequence": "^1.0.0",
+    "gulp-typescript": "^4.0.0-alpha.1",
+    "lerna": "^2.7.0",
     "rimraf": "^2.6.2",
     "tslint": "^5.8.0",
     "typescript": "^2.6.2"

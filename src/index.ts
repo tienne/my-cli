@@ -1,9 +1,2 @@
-#!/usr/bin/env node
-import {Cli} from './core';
-
-const minda = new Cli('minda', './commands');
-
-minda.run()
-  .then(() => {
-    //
-  });
+export * from './common';
+export * from './core/deco-application';
